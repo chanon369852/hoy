@@ -1,0 +1,137 @@
+ชื่อฐานข้อมมูล rga_dashboard ใช้ xampp
+ad_metrics
+Column	Type	Null	Default	Comments
+id (Primary)	int(11)	No		
+client_id	int(11)	No		
+campaign	varchar(255)	Yes	NULL	
+channel	varchar(50)	Yes	NULL	
+clicks	int(11)	Yes	0	
+impressions	int(11)	Yes	0	
+conversions	int(11)	Yes	0	
+cost	decimal(10,2)	Yes	0.00	
+timestamp	datetime	Yes	current_timestamp()	
+Indexes
+Keyname	Type	Unique	Packed	Column	Cardinality	Collation	Null	Comment
+PRIMARY	BTREE	Yes	No	id	0	A	No	
+client_id	BTREE	No	No	client_id	0	A	No	
+alerts
+Column	Type	Null	Default	Comments
+id (Primary)	int(11)	No		
+client_id	int(11)	No		
+metric	varchar(100)	Yes	NULL	
+alert_condition	varchar(50)	Yes	NULL	
+threshold	decimal(10,2)	Yes	NULL	
+is_triggered	tinyint(1)	Yes	0	
+created_at	datetime	Yes	current_timestamp()	
+Indexes
+Keyname	Type	Unique	Packed	Column	Cardinality	Collation	Null	Comment
+PRIMARY	BTREE	Yes	No	id	0	A	No	
+client_id	BTREE	No	No	client_id	0	A	No	
+audit_logs
+Column	Type	Null	Default	Comments
+id (Primary)	int(11)	No		
+user_id	int(11)	No		
+action	varchar(255)	Yes	NULL	
+description	text	Yes	NULL	
+created_at	datetime	Yes	current_timestamp()	
+Indexes
+Keyname	Type	Unique	Packed	Column	Cardinality	Collation	Null	Comment
+PRIMARY	BTREE	Yes	No	id	0	A	No	
+user_id	BTREE	No	No	user_id	0	A	No	
+clients
+Column	Type	Null	Default	Comments
+id (Primary)	int(11)	No		
+name	varchar(255)	No		
+email	varchar(255)	Yes	NULL	
+phone	varchar(50)	Yes	NULL	
+created_at	datetime	Yes	current_timestamp()	
+Indexes
+Keyname	Type	Unique	Packed	Column	Cardinality	Collation	Null	Comment
+PRIMARY	BTREE	Yes	No	id	3	A	No	
+orders
+Column	Type	Null	Default	Comments
+id (Primary)	int(11)	No		
+client_id	int(11)	No		
+customer_name	varchar(255)	Yes	NULL	
+total_amount	decimal(10,2)	Yes	0.00	
+status	enum('pending', 'paid', 'cancel')	Yes	pending	
+created_at	datetime	Yes	current_timestamp()	
+Indexes
+Keyname	Type	Unique	Packed	Column	Cardinality	Collation	Null	Comment
+PRIMARY	BTREE	Yes	No	id	0	A	No	
+client_id	BTREE	No	No	client_id	0	A	No	
+order_items
+Column	Type	Null	Default	Comments
+id (Primary)	int(11)	No		
+order_id	int(11)	No		
+product_id	int(11)	No		
+quantity	int(11)	Yes	0	
+price	decimal(10,2)	Yes	0.00	
+Indexes
+Keyname	Type	Unique	Packed	Column	Cardinality	Collation	Null	Comment
+PRIMARY	BTREE	Yes	No	id	0	A	No	
+order_id	BTREE	No	No	order_id	0	A	No	
+product_id	BTREE	No	No	product_id	0	A	No	
+products
+Column	Type	Null	Default	Comments
+id (Primary)	int(11)	No		
+client_id	int(11)	No		
+name	varchar(255)	No		
+description	text	Yes	NULL	
+stock_quantity	int(11)	Yes	0	
+price	decimal(10,2)	Yes	0.00	
+created_at	datetime	Yes	current_timestamp()	
+Indexes
+Keyname	Type	Unique	Packed	Column	Cardinality	Collation	Null	Comment
+PRIMARY	BTREE	Yes	No	id	0	A	No	
+client_id	BTREE	No	No	client_id	0	A	No	
+roles
+Column	Type	Null	Default	Comments
+id (Primary)	int(11)	No		
+role_name	varchar(50)	No		
+Indexes
+Keyname	Type	Unique	Packed	Column	Cardinality	Collation	Null	Comment
+PRIMARY	BTREE	Yes	No	id	4	A	No	
+role_name	BTREE	Yes	No	role_name	4	A	No	
+seo_metrics
+Column	Type	Null	Default	Comments
+id (Primary)	int(11)	No		
+client_id	int(11)	No		
+keyword	varchar(255)	Yes	NULL	
+position	int(11)	Yes	NULL	
+traffic	int(11)	Yes	NULL	
+conversions	int(11)	Yes	NULL	
+date	date	Yes	curdate()	
+Indexes
+Keyname	Type	Unique	Packed	Column	Cardinality	Collation	Null	Comment
+PRIMARY	BTREE	Yes	No	id	0	A	No	
+client_id	BTREE	No	No	client_id	0	A	No	
+uploads
+Column	Type	Null	Default	Comments
+id (Primary)	int(11)	No		
+client_id	int(11)	No		
+filename	varchar(255)	Yes	NULL	
+filepath	varchar(255)	Yes	NULL	
+mimetype	varchar(50)	Yes	NULL	
+size	int(11)	Yes	NULL	
+uploaded_at	datetime	Yes	current_timestamp()	
+Indexes
+Keyname	Type	Unique	Packed	Column	Cardinality	Collation	Null	Comment
+PRIMARY	BTREE	Yes	No	id	0	A	No	
+client_id	BTREE	No	No	client_id	0	A	No	
+users
+Column	Type	Null	Default	Comments
+id (Primary)	int(11)	No		
+client_id	int(11)	Yes	NULL	
+name	varchar(255)	Yes	NULL	
+email	varchar(255)	Yes	NULL	
+password_hash	varchar(255)	Yes	NULL	
+role	enum('admin', 'manager', 'viewer')	Yes	viewer	
+status	enum('active', 'inactive')	Yes	active	
+created_at	datetime	Yes	current_timestamp()	
+Indexes
+Keyname	Type	Unique	Packed	Column	Cardinality	Collation	Null	Comment
+PRIMARY	BTREE	Yes	No	id	1	A	No	
+email	BTREE	Yes	No	email	1	A	Yes	
+
+Open new phpMyAdmin window
